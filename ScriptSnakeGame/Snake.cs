@@ -11,6 +11,7 @@ public class Snake : MonoBehaviour
     [SerializeField] private float step = 0.5f;
 
     [SerializeField] private Transform bodyPrefab;
+    [SerializeField] private HighScoreBoard scoreBoard;
 
     private List<Transform> body = new List<Transform>();
     private List<Vector3> positions = new List<Vector3>();
@@ -88,7 +89,8 @@ public class Snake : MonoBehaviour
         if (collision.CompareTag("Food"))
         {
             Grow();
+            scoreBoard.AddScore(1); // ⭐ thêm dòng này
             Destroy(collision.gameObject);
         }
-    }
+}
 }
