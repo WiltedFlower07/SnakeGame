@@ -12,7 +12,7 @@ public class Snake : MonoBehaviour
 
     [SerializeField] private Transform bodyPrefab;
     [SerializeField] private HighScoreBoard scoreBoard;
-
+    [SerializeField] private float minX, maxX, minY, maxY;
     private List<Transform> body = new List<Transform>();
     private List<Vector3> positions = new List<Vector3>();
     private Vector3 lastTailPosition;
@@ -63,6 +63,10 @@ public class Snake : MonoBehaviour
 
         positions.Insert(0, newPos);
         transform.position = newPos;
+        if (newPos.x < minX || newPos.x > maxX || newPos.y < minY || newPos.y > maxY)
+        {
+            Die();
+        }
 
         for (int i = 0; i < body.Count; i++)
         {
@@ -75,6 +79,11 @@ public class Snake : MonoBehaviour
         }
     }
 
+    void Die()
+    {
+        Debug.Log("Game Over");
+        Time.timeScale = 0f;
+    }
     // Sau khi ăn tăng độ dài của nhân vật
     public void Grow()
     {
