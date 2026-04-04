@@ -4,15 +4,22 @@ using UnityEngine;
 
 public class HighScoreBoard : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public int currentScore;
+
     void Start()
     {
-        
+        int highScore = PlayerPrefs.GetInt("HighScore", 0);
+        Debug.Log("High Score: " + highScore);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SaveScore()
     {
-        
+        int highScore = PlayerPrefs.GetInt("HighScore", 0);
+
+        if (currentScore > highScore)
+        {
+            PlayerPrefs.SetInt("HighScore", currentScore);
+            PlayerPrefs.Save();
+        }
     }
 }
