@@ -45,14 +45,4 @@ public class HighScoreBoard : MonoBehaviour
             PlayerPrefs.Save();
         }
     }
-
-    // Dành cho việc test trước khi build xong game
-    public void ResetHighScore()
-    {
-        PlayerPrefs.SetInt("HighScore", 0);
-        PlayerPrefs.Save();
-
-        highScore = 0;
-        UpdateUI();
-    }
 }
