@@ -7,7 +7,7 @@ public class Snake : MonoBehaviour
     private int direction = 1;
     private float timer = 0f;
 
-    [SerializeField] private float moveDelay = 0.75f;
+    [SerializeField] private float moveDelay = 0.4f;
     [SerializeField] private float step = 0.5f;
 
     [SerializeField] private Transform bodyPrefab;
@@ -17,8 +17,11 @@ public class Snake : MonoBehaviour
     private List<Vector3> positions = new List<Vector3>();
     private Vector3 lastTailPosition;
 
+    [SerializeField] private GameObject LoseScene; // thêm cảnh hiển thị khi thua
+
     void Start()
     {
+        Time.timeScale = 1f; // Đảm bảo game chạy bình thường khi bắt đầu
         positions.Add(transform.position);
     }
 
@@ -81,6 +84,7 @@ public class Snake : MonoBehaviour
 
     void Die()
     {
+        LoseScene.SetActive(true);
         Debug.Log("Game Over");
         Time.timeScale = 0f;
     }
@@ -101,5 +105,5 @@ public class Snake : MonoBehaviour
             scoreBoard.AddScore(1); // ⭐ thêm dòng này
             Destroy(collision.gameObject);
         }
-}
+    }
 }
