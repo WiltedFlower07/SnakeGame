@@ -10,7 +10,7 @@ public class SnakeCollision : MonoBehaviour
     {
 
         // Xử lý va chạm với tường hoặc thân mình
-        if (collision.CompareTag("Border") || collision.CompareTag("Body"))
+        if ( collision.CompareTag("Body"))
         {
             Destroy(collision.gameObject);
             LoseScene.SetActive(true);
