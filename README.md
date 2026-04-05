@@ -9,3 +9,4 @@ BT SS004.9
 Sử dụng Slack, Discord để giao tiếp và Unity Hub làm công cụ chính để chỉnh sửa và làm game. Hiện tại chỉ có bản dành cho máy tính: Windown, Linux, Mac và chưa có bản dành cho điện thoại.
 Phần hình ảnh lấy từ Snake II - Classic Retro
 Nhạc: Eric Skiff - A Night Of Dizzy Spells
+Link tải game: https://drive.google.com/file/d/106rhP_4zPYiiWf5NZZz-a0wTeHNHAsAy/view?usp=drive_link
