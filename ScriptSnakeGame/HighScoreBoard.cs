@@ -1,26 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class HighScoreBoard : MonoBehaviour
-{
-    public int currentScore;
-
-    void Start()
-    {
-        int highScore = PlayerPrefs.GetInt("HighScore", 0);
-        Debug.Log("High Score: " + highScore);
-    }
-
-    public void SaveScore()
-    {
-        int highScore = PlayerPrefs.GetInt("HighScore", 0);using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class HighScoreBoard : MonoBehaviour
 {
-    public Text scoreText;      // UI hiện điểm hiện tại
-    public Text highScoreText;  // UI hiện high score
+    // UnityHub không nhận diện được Text, phải dùng TMP_Text, TMPro 
+
+    [SerializeField] private TMP_Text scoreText; // UI hiện điểm hiện tại 
+    [SerializeField] private TMP_Text highScoreText; // UI hiện high score
 
     private int score = 0;
     private int highScore = 0;
@@ -48,14 +37,22 @@ public class HighScoreBoard : MonoBehaviour
     void UpdateUI()
     {
         scoreText.text = "Score: " + score;
-        highScoreText.text = "High Score: " + highScore;
-    }
-}
+        highScoreText.text = "Highest score: " + highScore;
 
-        if (currentScore > highScore)
+        if (score > highScore)
         {
-            PlayerPrefs.SetInt("HighScore", currentScore);
+            PlayerPrefs.SetInt("HighScore", score);
             PlayerPrefs.Save();
         }
+    }
+
+    // Dành cho việc test trước khi build xong game
+    public void ResetHighScore()
+    {
+        PlayerPrefs.SetInt("HighScore", 0);
+        PlayerPrefs.Save();
+
+        highScore = 0;
+        UpdateUI();
     }
 }
