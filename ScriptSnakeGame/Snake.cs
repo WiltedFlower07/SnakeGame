@@ -102,8 +102,6 @@ public class Snake : MonoBehaviour
         if (collision.CompareTag("Food"))
         {
             Grow();
-            scoreBoard.AddScore(1); // ⭐ thêm dòng này
-            Destroy(collision.gameObject);
         }
     }
 }
